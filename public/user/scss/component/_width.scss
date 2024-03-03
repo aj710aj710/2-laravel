@@ -1,0 +1,78 @@
+/* Minimum width */
+$min-w-array: 50, 100, 120, 150, 160, 200, 224, 1100;
+@each $min in $min-w-array {
+  .min-w-#{$min} {
+    min-width: toRem($min);
+  }
+}
+$min-sm-w-array: 50, 100, 120, 150, 160, 200, 600;
+@each $min-sm in $min-sm-w-array {
+  .min-sm-w-#{$min-sm} {
+    @media screen and (min-width: 1400px) {
+      min-width: toRem($min-sm);
+    }
+  }
+}
+/* Maximum width */
+$max-w-array: 22, 70, 80, 130, 131, 163, 174, 206, 220, 241, 366, 411, 419, 445, 483, 581, 634, 680, 874, 1701;
+@each $max in $max-w-array {
+  .max-w-#{$max} {
+    max-width: toRem($max);
+  }
+}
+/* Width */
+$w-array: 21, 30, 32, 40, 56;
+@each $w in $w-array {
+  .w-#{$w} {
+    width: toRem($w) !important;
+  }
+}
+/* Minimum Height */
+$min-h-array: 0;
+@each $min in $min-h-array {
+  .min-h-#{$min} {
+    min-height: toRem($min);
+  }
+}
+/* Minimum Vertical Height */
+$min-vh-h-array: 88;
+@each $min-vh in $min-vh-h-array {
+  .min-vh-h-#{$min-vh} {
+    min-height: #{$min-vh}vh;
+  }
+}
+/* Maximum Height */
+$max-h-array: 35;
+@each $max in $max-h-array {
+  .max-h-#{$max} {
+    max-height: toRem($max);
+  }
+}
+/* Height */
+$h-array: 21, 30, 32, 40, 56, 111;
+@each $h in $h-array {
+  .h-#{$h} {
+    height: toRem($h) !important;
+  }
+}
+/* Top */
+$top-array: 10;
+@each $t in $top-array {
+  .top-#{$t} {
+    top: #{$t}px !important;
+  }
+}
+/* Left */
+$left-array: 0;
+@each $l in $left-array {
+  .left-#{$l} {
+    left: #{$l}px !important;
+  }
+}
+/* Right */
+$right-array: 10;
+@each $r in $right-array {
+  .right-#{$r} {
+    right: #{$r}px !important;
+  }
+}

@@ -1,0 +1,16 @@
+.hover {
+  &-color {
+    &-one {
+      &:hover {
+        color: $main-color !important;
+      }
+    }
+  }
+  &-bg {
+    &-one {
+      &:hover {
+        background-color: $main-color !important;
+      }
+    }
+  }
+}

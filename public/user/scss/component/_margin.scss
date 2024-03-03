@@ -1,0 +1,28 @@
+/* Margin Left & Right */
+$mx-array: 15, 30;
+@each $mx in $mx-array {
+  .mx-#{$mx} {
+    margin-left: toRem($mx) !important;
+    margin-right: toRem($mx) !important;
+  }
+}
+/* Margin top */
+$mt-array: 18;
+@each $mta in $mt-array {
+  .mt-#{$mta} {
+    margin-top: toRem($mta) !important;
+  }
+}
+/* Margin bottom */
+$mb-array: 11, 13, 15, 18, 19, 20, 22, 24, 25, 26, 31, 37, 44, 50;
+@each $mba in $mb-array {
+  .mb-#{$mba} {
+    margin-bottom: toRem($mba) !important;
+  }
+}
+/* Margin Start */
+.ms-lg-auto {
+  @media screen and (min-width: 992px) {
+    margin-left: auto;
+  }
+}

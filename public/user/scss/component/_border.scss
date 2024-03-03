@@ -1,0 +1,50 @@
+/* Border */
+$borders: (
+  "one": 1,
+);
+@each $key, $bd in $borders {
+  .bd-#{$key} {
+    border-width: toRem($bd) !important;
+    border-style: solid;
+  }
+}
+/* Border top */
+$borders-t: (
+  "one": 1,
+);
+@each $key, $bd in $borders-t {
+  .bd-t-#{$key} {
+    border-top-width: toRem($bd) !important;
+    border-top-style: solid;
+  }
+}
+/* Border Bottom */
+$borders-b: (
+  "one": 1,
+);
+@each $key, $bd in $borders-b {
+  .bd-b-#{$key} {
+    border-bottom-width: toRem($bd) !important;
+    // border-bottom-width: #{$bd}px !important;
+    border-bottom-style: solid;
+  }
+}
+/* Border Left */
+$borders-sm-l: (
+  "one": 1,
+);
+@each $key, $bd-sm-l in $borders-sm-l {
+  .bd-sm-l-#{$key} {
+    @media screen and (min-width: 576px) {
+      border-left-width: toRem($bd-sm-l) !important;
+      border-left-style: solid;
+    }
+  }
+}
+/* Border Radius */
+$bdr-array: 8, 10, 12, 15, 40;
+@each $bdr in $bdr-array {
+  .bd-ra-#{$bdr} {
+    border-radius: toRem($bdr) !important;
+  }
+}

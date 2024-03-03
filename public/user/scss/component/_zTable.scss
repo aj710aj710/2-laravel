@@ -1,0 +1,269 @@
+/* Start Table Styles */
+.zTable {
+  width: 100% !important;
+  font-size: toRem(14) !important;
+  font-weight: $fw_medium !important;
+  color: $text-black !important;
+  margin-bottom: 0;
+  border-color: $stroke-color;
+  border-bottom: none !important;
+  > :not(caption) {
+    &:first-child {
+      > * {
+        > * {
+          border-bottom: none;
+          padding: 0 !important;
+          > * {
+            background-color: $secondary-color;
+          }
+          &:first-child {
+            padding-left: 0 !important;
+            > * {
+              border-radius: toRem(10) 0 0 toRem(10);
+            }
+          }
+          &:last-child {
+            padding-right: 0 !important;
+            > * {
+              border-radius: 0 toRem(10) toRem(10) 0;
+            }
+          }
+          > * {
+            padding: toRem(8) toRem(20) !important;
+          }
+        }
+      }
+    }
+    > * {
+      position: relative;
+      > * {
+        padding: toRem(14.75) toRem(20) !important;
+        border-bottom-color: $stroke-color !important;
+        vertical-align: middle;
+        &:first-child {
+          padding-left: toRem(20) !important;
+        }
+        &:last-child {
+          padding-right: toRem(20) !important;
+        }
+      }
+      &:last-child {
+        > * {
+          border-bottom: none !important;
+          @media screen and (min-width: 992px) {
+            padding-bottom: 0 !important;
+          }
+        }
+      }
+    }
+  }
+  thead {
+    tr {
+      th {
+        font-size: toRem(14) !important;
+        font-weight: $fw_medium !important;
+        line-height: toRem(24);
+        color: $text-black;
+      }
+    }
+  }
+  tbody {
+    tr {
+      td {
+        font-size: toRem(14) !important;
+        font-weight: $fw_regular !important;
+        line-height: toRem(24);
+        color: $para-text;
+      }
+    }
+  }
+  > tbody > tr > * {
+    transition: all 0.3s;
+  }
+  &-1 {
+    width: 100% !important;
+    font-size: toRem(14) !important;
+    font-weight: $fw_medium !important;
+    color: $text-black !important;
+    margin-bottom: 0;
+    border-color: $stroke-color;
+    border-bottom: none !important;
+    > :not(caption) {
+      > * {
+        position: relative;
+        > * {
+          padding: toRem(15) !important;
+          border-bottom-color: $stroke-color !important;
+          vertical-align: middle;
+          &:first-child {
+            padding-left: 0 !important;
+          }
+          &:last-child {
+            padding-right: 0 !important;
+            text-align: right;
+          }
+        }
+        &:first-child {
+          > * {
+            padding-top: 0 !important;
+          }
+        }
+        &:last-child {
+          > * {
+            border-bottom: none !important;
+            padding-bottom: 0 !important;
+          }
+        }
+      }
+    }
+    thead {
+      tr {
+        th {
+          font-size: toRem(14) !important;
+          font-weight: $fw_medium !important;
+          line-height: toRem(24);
+          color: $text-black;
+        }
+      }
+    }
+    tbody {
+      tr {
+        td {
+          font-size: toRem(14) !important;
+          font-weight: $fw_regular !important;
+          line-height: toRem(24);
+          color: $para-text;
+        }
+      }
+    }
+    > tbody > tr > * {
+      transition: all 0.3s;
+    }
+  }
+  &-invoice {
+    > :not(caption) {
+      > * {
+        position: relative;
+        > * {
+          padding: toRem(25.25) toRem(20) !important;
+        }
+        &:last-child {
+          > * {
+            border-bottom: toRem(1) solid $stroke-color !important;
+            padding-bottom: toRem(20) !important;
+          }
+        }
+      }
+    }
+  }
+  &-last-item-right {
+    > :not(caption) {
+      > * {
+        > * {
+          &:last-child {
+            text-align: right;
+          }
+        }
+      }
+    }
+  }
+  &-last-item-center {
+    > :not(caption) {
+      > * {
+        > * {
+          &:last-child {
+            text-align: center;
+          }
+        }
+      }
+    }
+  }
+  &-last-item-border {
+    > :not(caption) {
+      &:last-child {
+        > * {
+          &:last-child {
+            > * {
+              border-bottom: toRem(1) solid $stroke-color !important;
+              padding-bottom: toRem(20) !important;
+            }
+          }
+        }
+      }
+    }
+  }
+  tbody {
+    tr {
+      &.child {
+        td {
+          text-align: left !important;
+        }
+      }
+    }
+  }
+  &-responsive {
+    @media screen and (min-width: 1024px) {
+      overflow: hidden;
+    }
+    @media screen and (max-width: 1023px) {
+      padding-bottom: toRem(20);
+    }
+  }
+}
+.table-responsive {
+  // scrollbar-gutter: stable both-edges;
+  scrollbar-width: thin;
+  &::-webkit-scrollbar {
+    // width: toRem(6);
+    height: toRem(6);
+  }
+  &::-webkit-scrollbar-track {
+    background: $scroll-track;
+    border-radius: toRem(50);
+  }
+  &::-webkit-scrollbar-thumb {
+    background: $scroll-thumb;
+    border-radius: toRem(50);
+  }
+}
+table.dataTable.dtr-inline.collapsed > tbody > tr {
+  &:last-child {
+    > td.dtr-control,
+    > th.dtr-control {
+      &::before {
+        @media screen and (min-width: 992px) {
+          transform: translateY(calc(-1 * toRem(2)));
+        }
+      }
+    }
+  }
+  > td.dtr-control,
+  > th.dtr-control {
+    padding-left: toRem(40) !important;
+    &::before {
+      top: 50%;
+      left: toRem(4);
+      transform: translateY(-50%);
+      height: toRem(16);
+      width: toRem(16);
+      display: block;
+      position: absolute;
+      color: $white;
+      border: toRem(2) solid $white;
+      border-radius: 50%;
+      text-align: center;
+      line-height: toRem(14);
+      box-shadow: 0 0 toRem(3) $black;
+      box-sizing: content-box;
+      content: "+";
+      background-color: $para-text;
+      transition: all 0.3s;
+    }
+  }
+}
+
+table.dataTable.dtr-inline.collapsed > tbody > tr.parent > td.dtr-control:before,
+table.dataTable.dtr-inline.collapsed > tbody > tr.parent > th.dtr-control:before {
+  content: "-";
+}
+/* End Table Styles */

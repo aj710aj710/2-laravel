@@ -1,0 +1,249 @@
+.zSidebar-menu {
+  > li {
+    position: relative;
+    padding: 0 toRem(12);
+    margin-bottom: toRem(6);
+    &:last-child {
+      margin-bottom: 0;
+    }
+    svg {
+      max-width: 22px;
+      max-height: 22px;
+    }
+    > a {
+      position: relative;
+      padding: toRem(10) toRem(16);
+      border-radius: toRem(12);
+      span {
+        @include fontFamily(14, $fw_medium, 24, $sidebar-text-color);
+      }
+      &::before {
+        position: absolute;
+        content: "";
+        width: 0.5em;
+        height: 0.5em;
+        border-width: 1px 0 0 1px;
+        border-style: solid;
+        border-color: $white;
+        right: 1em;
+        transform: rotate(135deg) translate(0, -50%);
+        transform-origin: top;
+        top: 50%;
+        opacity: 0;
+        visibility: hidden;
+        transition: all 0.3s ease-out;
+      }
+      &.has-subMenu-arrow {
+        &::before {
+          opacity: 1;
+          visibility: visible;
+        }
+      }
+      &[aria-expanded="true"] {
+        &::before {
+          transform: rotate(227deg);
+        }
+      }
+      &:hover,
+      &.active {
+        svg {
+          path {
+            fill: $sidebar-hover-icon;
+            &:not(:first-child) {
+              fill-opacity: 0.4;
+            }
+          }
+        }
+        &.menu {
+          &-bell {
+            svg {
+              path {
+                fill: inherit;
+                &:not(:first-child) {
+                  fill-opacity: inherit;
+                }
+                &:first-child {
+                  stroke: $sidebar-hover-icon;
+                }
+                &:nth-child(2) {
+                  fill: $sidebar-hover-icon;
+                }
+                &:nth-child(3),
+                &:nth-child(4),
+                &:nth-child(5) {
+                  stroke: $sidebar-hover-icon;
+                  stroke-opacity: 0.4;
+                }
+              }
+            }
+          }
+          &-customer {
+            svg {
+              path {
+                fill: inherit;
+                &:not(:first-child) {
+                  fill-opacity: inherit;
+                }
+                &:first-child,
+                &:nth-child(2),
+                &:last-child {
+                  fill: $sidebar-hover-icon;
+                }
+                &:last-child {
+                  fill-opacity: 0.4;
+                }
+              }
+            }
+          }
+          &-sales {
+            svg {
+              path {
+                fill: inherit;
+                &:not(:first-child) {
+                  fill-opacity: inherit;
+                }
+                &:first-child {
+                  fill: $sidebar-hover-icon;
+                  fill-opacity: 0.4;
+                }
+                &:nth-child(2),
+                &:nth-child(3) {
+                  fill: $sidebar-hover-icon;
+                }
+                &:nth-child(4),
+                &:nth-child(5),
+                &:nth-child(6),
+                &:nth-child(7),
+                &:nth-child(8),
+                &:nth-child(9) {
+                  stroke: $sidebar-hover-icon;
+                }
+                &:nth-child(7),
+                &:nth-child(8) {
+                  stroke-opacity: 0.4;
+                }
+              }
+            }
+          }
+          &-invoice {
+            svg {
+              path {
+                fill: inherit;
+                &:not(:first-child) {
+                  fill-opacity: inherit;
+                }
+                &:first-child {
+                  fill: $sidebar-hover-icon;
+                  fill-opacity: 0.4;
+                }
+                &:nth-child(2) {
+                  fill: $sidebar-hover-icon;
+                }
+              }
+            }
+          }
+          &-webhook {
+            svg {
+              path {
+                fill: inherit;
+                &:not(:first-child) {
+                  fill-opacity: inherit;
+                }
+                &:first-child,
+                &:nth-child(2) {
+                  fill: $sidebar-hover-icon;
+                  fill-opacity: 0.4 !important;
+                }
+                &:last-child,
+                &:nth-child(7) {
+                  stroke: $sidebar-hover-icon;
+                }
+              }
+              rect {
+                fill: $sidebar-hover-icon;
+              }
+            }
+          }
+          &-setting {
+            svg {
+              path {
+                fill: inherit;
+                &:not(:first-child) {
+                  fill-opacity: inherit;
+                }
+                &:nth-child(2) {
+                  fill: $sidebar-hover-icon;
+                  fill-opacity: 0.4 !important;
+                }
+                &:nth-child(3) {
+                  stroke: $sidebar-hover-icon;
+                }
+              }
+              circle {
+                stroke: $sidebar-hover-icon;
+              }
+            }
+          }
+          &-multiCheck {
+            svg {
+              path {
+                fill: inherit;
+                &:not(:first-child) {
+                  fill-opacity: inherit;
+                }
+                &:first-child {
+                  fill: $sidebar-hover-icon;
+                  fill-opacity: 0.4 !important;
+                }
+                &:last-child {
+                  stroke: $sidebar-hover-icon;
+                }
+              }
+            }
+          }
+          &-affiliate {
+            svg {
+              path {
+                fill: inherit;
+                &:not(:first-child) {
+                  fill-opacity: inherit;
+                }
+                &:first-child,
+                &:nth-child(4),
+                &:last-child {
+                  fill: $sidebar-hover-icon;
+                }
+                &:nth-child(2),
+                &:nth-child(3) {
+                  stroke: $sidebar-hover-icon;
+                  stroke-opacity: 0.4;
+                }
+              }
+            }
+          }
+        }
+        background-color: $sidebar-hover;
+        box-shadow: 0 toRem(2) 0 $sidebar-shadow;
+        span {
+          color: $white;
+        }
+        // &::before {
+        //   opacity: 1;
+        //   visibility: visible;
+        // }
+      }
+    }
+  }
+}
+.zSidebar-fixed {
+  max-height: calc(100% - toRem(85));
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  overflow-y: scroll;
+  scrollbar-width: none;
+  &::-webkit-scrollbar {
+    display: none !important;
+  }
+}

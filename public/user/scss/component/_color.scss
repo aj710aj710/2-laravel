@@ -1,0 +1,61 @@
+$theme-colors: (
+  "black-5": var(--black-5),
+  "white": var(--white),
+  "white-10": var(--white-10),
+  "white-12": var(--white-12),
+  "white-80": var(--white-80),
+  "black": var(--black),
+  "body-bg": var(--body-bg),
+  "textBlack": var(--text-black),
+  "textBlack-50": var(--text-black-50),
+  "main-color": var(--main-color),
+  "main-color-20": var(--main-color-20),
+  "para-text": var(--para-text),
+  "stroke-color": var(--stroke-color),
+  "green": var(--green),
+  "yellow": var(--yellow),
+  "blue": var(--blue),
+  "gray": var(--gray),
+  "sidebar-text-color": var(--sidebar-text-color),
+  "red": var(--red),
+  "bg-color": var(--bg-color),
+  "input-color": var(--input-color),
+  "cancel-color": var(--cancel-color),
+  "stroke-2-color": var(--stroke-2-color),
+  "green-light": var(--green-light),
+  "yellow-light": var(--yellow-light),
+  "blue-light": var(--blue-light),
+  "red-light": var(--red-light),
+  "purple-light": var(--purple-light),
+  "secondary-color": var(--secondary-color),
+  "header-text": var(--header-text),
+  "color1": var(--color1),
+  "color2": var(--color2),
+  "color3": var(--color3),
+  "color4": var(--color4),
+  "color5": var(--color5),
+  "color6": var(--color6),
+  "color7": var(--color7),
+  "color8": var(--color8),
+  "color9": var(--color9),
+  "color10": var(--color10),
+  "color11": var(--color11),
+  "color12": var(--color12),
+);
+@each $key, $color in $theme-colors {
+  .text-#{$key} {
+    color: $color !important;
+  }
+}
+/* Background Color */
+@each $key, $color in $theme-colors {
+  .bg-#{$key} {
+    background-color: $color !important;
+  }
+}
+/* Border Color */
+@each $key, $color in $theme-colors {
+  .bd-c-#{$key} {
+    border-color: $color !important;
+  }
+}

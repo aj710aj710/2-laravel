@@ -1,0 +1,169 @@
+.zTab {
+  &-reset {
+    --bs-nav-link-padding-x: 0;
+    --bs-nav-link-padding-y: 0;
+    --bs-nav-link-font-weight: 400;
+    --bs-nav-link-color: #fff;
+    --bs-nav-tabs-border-width: 0;
+    --bs-nav-tabs-border-color: #fff;
+    --bs-nav-tabs-border-radius: 0;
+    --bs-nav-tabs-link-active-color: #fff;
+    --bs-nav-tabs-link-active-bg: #fff;
+    flex-wrap: nowrap;
+    border-bottom: none;
+  }
+  &-vertical-wrap {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    gap: toRem(10) toRem(45);
+    @media screen and (max-width: 767px) {
+      flex-wrap: wrap;
+    }
+    .left {
+      flex: 1 0 auto;
+      max-width: toRem(254);
+      width: 100%;
+      padding: toRem(15) toRem(20);
+      background-color: $secondary-color;
+      border-radius: toRem(8);
+      @media screen and (max-width: 767px) {
+        max-width: 100%;
+        overflow-x: auto;
+      }
+    }
+    .right {
+      flex: 1 1 auto;
+    }
+  }
+  &-one {
+    gap: toRem(10);
+    overflow-x: auto;
+    border-bottom: toRem(1) solid $stroke-color;
+    padding-bottom: toRem(20);
+    margin-bottom: toRem(20);
+    .nav {
+      &-link {
+        padding: toRem(8) toRem(24);
+        background-color: $purple-light;
+        border-radius: toRem(8);
+        white-space: nowrap;
+        @include fontFamily(14, $fw_semiBold, 24, $main-color);
+        &.active {
+          background-color: $main-color;
+          color: $white;
+        }
+      }
+    }
+  }
+  &-two {
+    flex-direction: column;
+    gap: toRem(20) toRem(10);
+    @media screen and (max-width: 767px) {
+      flex-direction: row;
+    }
+    // overflow-x: auto;
+    .nav {
+      &-item {
+        display: flex;
+      }
+      &-link {
+        width: 100%;
+        text-align: left;
+        padding: 0;
+        background-color: transparent;
+        border-radius: 0;
+        white-space: nowrap;
+        @include fontFamily(14, $fw_medium, 17, $text-black);
+        ~ span {
+          @include fontFamily(14, $fw_medium, 17, $text-black);
+          @media screen and (max-width: 767px) {
+            display: none;
+          }
+        }
+        @media screen and (max-width: 767px) {
+          padding: toRem(8) toRem(24);
+          background-color: $purple-light;
+          border-radius: toRem(8);
+          color: $main-color;
+        }
+        &:hover,
+        &.active {
+          background-color: transparent;
+          color: $main-color;
+          ~ span {
+            color: $main-color;
+          }
+          @media screen and (max-width: 767px) {
+            background-color: $main-color;
+            color: $white;
+          }
+        }
+      }
+    }
+  }
+  &-three {
+    position: relative;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: toRem(10) toRem(25);
+    .nav {
+      &-link {
+        position: relative;
+        padding: toRem(12) toRem(34);
+        border-radius: toRem(12);
+        background-color: $color11;
+        white-space: nowrap;
+        @include fontFamily(18, $fw_medium, 34, $color12);
+        @media screen and (max-width: 400px) {
+          padding: toRem(12);
+        }
+        &.active {
+          background-color: $main-color;
+          color: $white !important;
+        }
+      }
+    }
+    ~ .tab-content {
+      position: relative;
+      padding-top: toRem(21);
+    }
+  }
+  &-four {
+    gap: toRem(13);
+    flex-wrap: wrap;
+    padding: toRem(17) toRem(20);
+    background-color: $purple-light;
+    border-radius: toRem(12);
+    margin-bottom: toRem(18);
+    .nav {
+      &-item {
+        flex: 1 0 auto;
+      }
+      &-link {
+        width: 100%;
+        border: none;
+        padding: 0;
+        background-color: transparent;
+        label {
+          cursor: pointer;
+          width: 100%;
+          padding: toRem(20);
+          background-color: $white;
+          border: toRem(1) solid $stroke-2-color;
+          border-radius: toRem(12);
+          white-space: nowrap;
+          @include fontFamily(14, $fw_semiBold, 24, $main-color);
+        }
+        &.active {
+          label {
+            border-color: $main-color;
+          }
+        }
+        input {
+          display: none;
+        }
+      }
+    }
+  }
+}
