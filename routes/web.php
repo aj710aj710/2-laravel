@@ -1,18 +1,19 @@
 <?php
 
-use App\Http\Controllers\CommonController;
-use App\Http\Controllers\User\InvoiceController;
 use App\Models\Language;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\EventController;
+use App\Http\Controllers\CommonController;
+use App\Http\Controllers\PaymentController;
+use App\Http\Controllers\CheckoutController;
 use App\Http\Controllers\Auth\LoginController;
 use App\Http\Controllers\Auth\GoogleController;
+use App\Http\Controllers\User\InvoiceController;
 use App\Http\Controllers\Auth\FacebookController;
 use App\Http\Controllers\VersionUpdateController;
 use App\Http\Controllers\User\GoogleAuthController;
 use App\Http\Controllers\Auth\ForgotPasswordController;
-use App\Http\Controllers\CheckoutController;
-use App\Http\Controllers\PaymentController;
 
 /*
 |--------------------------------------------------------------------------
@@ -85,3 +86,4 @@ Route::get('waiting', [PaymentController::class, 'waiting'])->name('waiting');
 Route::get('failed', [PaymentController::class, 'failed'])->name('failed');
 
 Route::get('invoice/{id}', [InvoiceController::class, 'invoiceDownload'])->name('invoice');
+Route::get('/event', [EventController::class, 'index'])->name('event.index');

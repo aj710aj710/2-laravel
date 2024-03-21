@@ -10,6 +10,8 @@ class Subscription extends Model
 {
     use HasFactory, SoftDeletes;
 
+    protected $table = 'subscriptions';
+
     protected $fillable =
     [
         'product_id',
@@ -30,6 +32,7 @@ class Subscription extends Model
         'number_of_recurring_cycle',
         'shipping_charge',
         'license',
+        'affiliate_code',
     ];
 
     public function product()

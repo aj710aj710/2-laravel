@@ -2,13 +2,15 @@
 
 namespace App\Http\Controllers\User;
 
-use App\Http\Controllers\Controller;
 use App\Models\Plan;
 use App\Models\Product;
+use App\Mail\Websitemail;
 use App\Models\Subscription;
-use App\Traits\ResponseTrait;
 use Illuminate\Http\Request;
+use App\Traits\ResponseTrait;
+use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Validator;
 
 
 class SubscriptionController extends Controller
@@ -72,5 +74,95 @@ class SubscriptionController extends Controller
     public function subscription($hash)
     {
         $paramData = decrypt($hash);
+    }
+
+    public function uploadsubscriptions(Request $request)
+    {
+      $validator = Validator::make($request->all(),[
+          'product_id'=> 'required',
+          
+          'plan_id'=> 'required',
+          'subscription_id'=> 'required',
+          'license'=> 'required',
+          'user_id'=> 'required',
+          'customer_id'=> 'required',
+          'start_date'=> 'required',
+          'end_date'=> 'required',
+          'due_day'=> 'required',
+          'amount'=> 'required',
+          'free_trail'=> 'required',
+          'setup_fee'=> 'required',
+          'billing_cycle'=> 'required',
+          'bill'=> 'required',
+          'duration'=> 'required',
+          'number_of_recurring_cycle'=> 'required',
+          'shipping_charge'=> 'required',
+          'status'=> 'required',
+          'deleted_at'=> 'required',
+      ]);
+      if($validator->fails())
+      {
+       $data=[
+           'status'=> 422,
+           'message'=> $validator->messages()
+       ];
+       return response()->json($data,422);
+      }else{
+       $subscriptions = new Subscription;
+       $subscriptions->product_id=$request->product_id;
+       $subscriptions->plan_id=$request->plan_id;
+       $subscriptions->subscription_id=$request->subscription_id;
+       $subscriptions->license=$request->license;
+       $subscriptions->user_id=$request->user_id;
+       $subscriptions->customer_id=$request->customer_id;
+       $subscriptions->start_date=$request->start_date;
+       $subscriptions->end_date=$request->end_date;
+       $subscriptions->due_day=$request->due_day;
+       $subscriptions->amount=$request->amount;
+       $subscriptions->free_trail=$request->free_trail;
+       $subscriptions->setup_fee=$request->setup_fee;
+       $subscriptions->billing_cycle=$request->billing_cycle;
+       $subscriptions->bill=$request->bill;
+       $subscriptions->duration=$request->duration;
+       $subscriptions->number_of_recurring_cycle=$request->number_of_recurring_cycle;
+       $subscriptions->shipping_charge=$request->shipping_charge;
+       $subscriptions->status=$request->status;
+       $subscriptions->deleted_at=$request->deleted_at;
+       
+       
+       $subscriptions->save();
+       $data=[
+          'status'=> 200,
+          'message'=>'Data uploaded successfully'
+       ];
+       return response()->json($data,200);
+      }
+    }
+    public function uploadsubscribers(Request $request)
+    {
+            $validated = $request->validate([
+                'email' => 'required|email|max:30']);
+
+        // else
+        // {
+
+ 
+            // Send email
+            $subject = 'Subscription Confirmation';
+            $view = view('emails.welcome_email');
+            $message = 'Please click on the following link in order to verify as subscriber:<br><br>';
+            
+            
+
+            $message .= $view;
+
+            \Mail::to($request->email)->send(new Websitemail($subject,$message));
+            $data=[
+                'status'=> 200,
+                'message'=>'Successfully Mail Send'
+             ];
+             return response()->json($data,200);
+            return redirect()->back()->with('success', 'Thanks, please check your inbox to confirm subscription');
+        // }
     }
 }

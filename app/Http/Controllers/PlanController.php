@@ -2,14 +2,15 @@
 
 namespace App\Http\Controllers;
 
-use App\Http\Requests\User\PlanRequest;
-use App\Http\Services\PlanService;
 use App\Models\Plan;
-use App\Models\Product;
-use App\Traits\ResponseTrait;
-use Illuminate\Http\Request;
-use Illuminate\Support\Facades\DB;
 use Mockery\Exception;
+use App\Models\Product;
+use Illuminate\Http\Request;
+use App\Traits\ResponseTrait;
+use App\Http\Services\PlanService;
+use Illuminate\Support\Facades\DB;
+use App\Http\Requests\User\PlanRequest;
+use Illuminate\Support\Facades\Validator;
 
 class PlanController extends Controller
 {
@@ -125,5 +126,62 @@ class PlanController extends Controller
             return $this->error([], getMessage(SOMETHING_WENT_WRONG));
         }
     }
+    public function index()
+    {
+        $plans = Plan::all();
+        return response()->json([
+            'status' => 200,
+            'plans' => $plans
+        ],200);
+     }
 
+      public function upload(Request $request)
+      {
+        $validator = Validator::make($request->all(),[
+            'product_id'=> 'required',
+            'name'=> 'required',
+            'code'=> 'required',
+            'due_day'=> 'required',
+            'price'=> 'required',
+            'billing_cycle'=> 'required',
+            'shipping_charge'=> 'required',
+            'bill'=> 'required',
+            'duration'=> 'required',
+            'number_of_recurring_cycle'=> 'required',
+            'status'=> 'required',
+            'free_trail'=> 'required',
+            'setup_fee'=> 'required',
+           
+        ]);
+        if($validator->fails())
+        {
+         $data=[
+             'status'=> 422,
+             'message'=> $validator->messages()
+         ];
+         return response()->json($data,422);
+        }else{
+         $plans = new Plan;
+         $plans->product_id=$request->product_id;
+         $plans->name=$request->name;
+         $plans->code=$request->code;
+         $plans->due_day=$request->due_day;
+         $plans->price=$request->price;
+         $plans->billing_cycle=$request->billing_cycle;
+         $plans->shipping_charge=$request->shipping_charge;
+         $plans->bill=$request->bill;
+         $plans->duration=$request->duration;
+         $plans->number_of_recurring_cycle=$request->number_of_recurring_cycle;
+         $plans->status=$request->status;
+         $plans->free_trail=$request->free_trail;
+         $plans->setup_fee=$request->setup_fee;
+         
+         $plans->save();
+         $data=[
+            'status'=> 200,
+            'message'=>'Data uploaded successfully'
+         ];
+         return response()->json($data,200);
+        }
+      }
 }

@@ -10,7 +10,21 @@ class Plan extends Model
 {
     use HasFactory, SoftDeletes;
 
-    public function taxPlan(){
-        return $this->hasMany(TaxSetting::class);
-    }
+    protected $table = 'plans';
+
+    protected $fillable = [
+        'product_id',
+        'name',
+        'code',
+        'due_day',
+        'price',
+        'billing_cycle',
+        'shipping_charge',
+        'bill',
+        'duration',
+        'number_of_recurring_cycle',
+        'status',
+        'free_trail',
+        'setup_fee',
+    ];
 }
